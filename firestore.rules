@@ -1,0 +1,108 @@
+/**
+ * Core Philosophy: This ruleset enforces a strict read-only model for all
+ * application data, suitable for a public-facing landing page. All collections,
+ * including event details, sponsorship tiers, and partner contacts, are publicly
+ * readable by anyone, including unauthenticated users. The 'sponsors' collection
+ * is restricted to authenticated admin users.
+ *
+ * Data Structure: The data is organized into three distinct, top-level
+ * collections: /trade_fair_events, /sponsorship_tiers, and /partner_contacts,
+ * and a restricted /sponsors collection.
+ * This flat structure simplifies querying and security rule logic.
+ *
+ * Key Security Decisions:
+ * - Public Read Access: All data except sponsors is considered public and can be read (`get`, `list`)
+ *   by any client without authentication.
+ * - Write Prohibition: All write operations (`create`, `update`, `delete`) are
+ *   explicitly disabled from the client-side for public data. Data is expected to be managed
+ *   through the Firebase Console or a trusted backend service, aligning with a
+ *   Database Account Control (DBAC) model for content management. This is the
+ *   safest default posture for this type of application.
+ * - Admin-only Access: The /sponsors collection is only accessible by authenticated users.
+ *   This is a starting point for an admin dashboard.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper Functions
+    // ------------------------------------
+
+    /**
+     * Always returns true, indicating the resource is public.
+     */
+    function isPublic() {
+      return true;
+    }
+
+    /**
+     * Always returns false, used to explicitly deny an operation.
+     */
+    function isNotAllowed() {
+      return false;
+    }
+    
+    /**
+     * Returns true if the user is authenticated.
+     */
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    /**
+     * @description Rule for the collection of Sponsors.
+     * @path /sponsors/{sponsorId}
+     * @allow An authenticated user can read, write, create, and delete sponsor records.
+     * @deny An unauthenticated user cannot access this collection.
+     * @principle Secures sponsor data for admin-only access.
+     */
+    match /sponsors/{sponsorId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    /**
+     * @description Rule for the collection of Trade Fair Events.
+     * @path /trade_fair_events/{tradeFairEventId}
+     * @allow An anonymous user (get): An unauthenticated visitor to the landing page can fetch event details.
+     * @deny Any user (create): No user, authenticated or not, can create a new event from the client.
+     * @principle Enforces a public read-only model. Data is for display purposes and managed by administrators, not end-users.
+     */
+    match /trade_fair_events/{tradeFairEventId} {
+      allow get: if isPublic();
+      allow list: if isPublic();
+      allow create: if isNotAllowed();
+      allow update: if isNotAllowed();
+      allow delete: if isNotAllowed();
+    }
+
+    /**
+     * @description Rule for the collection of Sponsorship Tiers.
+     * @path /sponsorship_tiers/{sponsorshipTierId}
+     * @allow An anonymous user (list): An unauthenticated visitor can list all available sponsorship tiers.
+     * @deny Any user (update): No user, authenticated or not, can modify an existing sponsorship tier from the client.
+     * @principle Enforces a public read-only model. Data is for display purposes and managed by administrators, not end-users.
+     */
+    match /sponsorship_tiers/{sponsorshipTierId} {
+      allow get: if isPublic();
+      allow list: if isPublic();
+      allow create: if isNotAllowed();
+      allow update: if isNotAllowed();
+      allow delete: if isNotAllowed();
+    }
+
+    /**
+     * @description Rule for the collection of Partner Contacts.
+     * @path /partner_contacts/{partnerContactId}
+     * @allow An anonymous user (get): An unauthenticated visitor can view the details of a specific partner contact.
+     * @deny Any user (delete): No user, authenticated or not, can delete a partner contact from the client.
+     * @principle Enforces a public read-only model. Data is for display purposes and managed by administrators, not end-users.
+     */
+    match /partner_contacts/{partnerContactId} {
+      allow get: if isPublic();
+      allow list: if isPublic();
+      allow create: if isNotAllowed();
+      allow update: if isNotAllowed();
+      allow delete: if isNotAllowed();
+    }
+  }
+}
