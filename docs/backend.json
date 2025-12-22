@@ -1,0 +1,265 @@
+{
+  "entities": {
+    "Sponsor": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Sponsor",
+      "type": "object",
+      "description": "Represents a sponsor of the trade fair.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the sponsor."
+        },
+        "fullName": {
+          "type": "string",
+          "description": "Full name of the sponsor or contact person."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the sponsor."
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number of the sponsor."
+        },
+        "company": {
+          "type": "string",
+          "description": "Company or organization name."
+        },
+        "sponsorshipTier": {
+          "type": "string",
+          "description": "The name of the sponsorship tier selected."
+        },
+        "amountPaid": {
+          "type": "number",
+          "description": "The amount paid by the sponsor."
+        },
+        "paymentReference": {
+          "type": "string",
+          "description": "The payment reference from the gateway."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the sponsorship was created."
+        }
+      },
+      "required": [
+        "fullName",
+        "email",
+        "phone",
+        "sponsorshipTier",
+        "amountPaid",
+        "paymentReference",
+        "createdAt"
+      ]
+    },
+    "SponsorshipTier": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "SponsorshipTier",
+      "type": "object",
+      "description": "Represents a sponsorship tier for the Kaduna International Trade Fair.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the sponsorship tier."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the sponsorship tier (e.g., Naming Rights, Gold, Silver, Bronze, Asset, SME Bronze, SME Silver, SME Gold, SME Platinum)."
+        },
+        "price": {
+          "type": "number",
+          "description": "Price of the sponsorship tier in Nigerian Naira."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the sponsorship tier."
+        },
+        "benefits": {
+          "type": "array",
+          "description": "An array of benefits associated with the sponsorship tier.",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "price",
+        "description",
+        "benefits"
+      ]
+    },
+    "PartnerContact": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "PartnerContact",
+      "type": "object",
+      "description": "Represents a contact person for partnership inquiries.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the partner contact."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the contact person."
+        },
+        "title": {
+          "type": "string",
+          "description": "Job title of the contact person."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the contact person.",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number of the contact person."
+        },
+        "organization": {
+          "type": "string",
+          "description": "The name of the organization that the partner contact is part of."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "title",
+        "email",
+        "phone",
+        "organization"
+      ]
+    },
+    "TradeFairEvent": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "TradeFairEvent",
+      "type": "object",
+      "description": "Represents the Kaduna International Trade Fair event.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the trade fair event."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the trade fair event (e.g., Kaduna International Trade Fair)."
+        },
+        "startDate": {
+          "type": "string",
+          "description": "Start date of the trade fair event.",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "End date of the trade fair event.",
+          "format": "date-time"
+        },
+        "venue": {
+          "type": "string",
+          "description": "Venue of the trade fair event (e.g., Kaduna Trade Fair Complex)."
+        },
+        "organizers": {
+          "type": "array",
+          "description": "Array of organizations responsible for organizing the event.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "visitorCount": {
+          "type": "string",
+          "description": "Visitor Count for the trade fair event"
+        },
+        "exhibitorCount": {
+          "type": "string",
+          "description": "Exhibitor Count for the trade fair event"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "startDate",
+        "endDate",
+        "venue",
+        "organizers"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/sponsors/{sponsorId}",
+        "definition": {
+          "entityName": "Sponsor",
+          "schema": {
+            "$ref": "#/backend/entities/Sponsor"
+          },
+          "description": "Stores information about the sponsors.",
+          "params": [
+            {
+              "name": "sponsorId",
+              "description": "Unique identifier for the sponsor."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/trade_fair_events/{tradeFairEventId}",
+        "definition": {
+          "entityName": "TradeFairEvent",
+          "schema": {
+            "$ref": "#/backend/entities/TradeFairEvent"
+          },
+          "description": "Stores information about the Kaduna International Trade Fair event.",
+          "params": [
+            {
+              "name": "tradeFairEventId",
+              "description": "Unique identifier for the trade fair event."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/sponsorship_tiers/{sponsorshipTierId}",
+        "definition": {
+          "entityName": "SponsorshipTier",
+          "schema": {
+            "$ref": "#/backend/entities/SponsorshipTier"
+          },
+          "description": "Stores details of the sponsorship tiers for the Kaduna International Trade Fair.",
+          "params": [
+            {
+              "name": "sponsorshipTierId",
+              "description": "Unique identifier for the sponsorship tier."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/partner_contacts/{partnerContactId}",
+        "definition": {
+          "entityName": "PartnerContact",
+          "schema": {
+            "$ref": "#/backend/entities/PartnerContact"
+          },
+          "description": "Stores contact information for partnership inquiries related to the Kaduna International Trade Fair.",
+          "params": [
+            {
+              "name": "partnerContactId",
+              "description": "Unique identifier for the partner contact."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to support the Kaduna Trade Fair Landing Page application, focusing on displaying event information, sponsorship tiers, and partner contacts. The structure prioritizes clarity and ease of querying.\n\n`/trade_fair_events/{tradeFairEventId}`: This collection stores information about the trade fair event itself, such as dates, venue, and organizers.  It contains a single document representing the current event.\n\n`/sponsorship_tiers/{sponsorshipTierId}`: This collection holds the details of the various sponsorship tiers available for the trade fair. Each document represents a different tier (e.g., Naming Rights, Gold, Silver, Bronze, Asset, SME Bronze, SME Silver, SME Gold, SME Platinum) and includes information like name, price, description, and benefits.\n\n`/partner_contacts/{partnerContactId}`: This collection stores the contact information for partnership inquiries. Each document represents a contact person (e.g., Hon. Abdulkareem Siyaka, Engr. Yusuf Bashir) and includes their name, title, email, phone number, and organization.\n\n**Authorization Independence and QAPs**:\n\nThis structure achieves Authorization Independence because there are no authorization dependencies between collections. Security rules can be written to control access to each collection independently, without needing to `get()` data from other collections.  For example, access to `/sponsorship_tiers` can be made public, while modification might be restricted to authorized personnel using DBAC (Database Account Control).  QAPs (Rules Are Not Filters) are supported because the flat structure allows for secure `list` operations.  For instance, listing all sponsorship tiers can be done securely without needing to filter based on complex rules that could impact performance."
+  }
+}

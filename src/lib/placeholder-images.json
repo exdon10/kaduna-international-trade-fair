@@ -1,0 +1,10 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-trade-fair",
+      "description": "A bustling scene from the Kaduna International Trade Fair.",
+      "imageUrl": "https://images.unsplash.com/photo-1542744095-291d1f67b221?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb25mZXJlbmNlJTIwZXZlbnR8ZW58MHx8fHwxNzE4ODg0MjI3fDA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "conference event"
+    }
+  ]
+}
