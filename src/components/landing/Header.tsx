@@ -39,14 +39,7 @@ export default function Header() {
              <KadIctHubLogo className="h-7 w-7" />
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <Button onClick={initializePayment} disabled={isInitializing}>
-            {isInitializing ? "Loading..." : "Become a Sponsor"}
-          </Button>
-          <Link href="/admin/login">
-            <Button variant="outline">Admin Login</Button>
-          </Link>
-        </div>
+      
       </div>
     </header>
   );
