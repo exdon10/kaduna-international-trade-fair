@@ -13,9 +13,8 @@ import {
 import { useMonnifyPayment } from "@/hooks/use-monnify";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Sponsorship", href: "#sponsorship" },
-  { label: "Contact", href: "#contact" },
+  { label: "Report", href: "/report" }
+
 ];
 
 export default function Header() {
