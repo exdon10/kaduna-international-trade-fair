@@ -1,16 +1,22 @@
-"use client";
+'use client';
 
 import { useState } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   KadccimaLogo,
   GrbsLogo,
   TradeFairLogo,
-  KadIctHubLogo,
+  KadIctHubLogo
 } from "@/components/icons";
 import { useMonnifyPayment } from "@/hooks/use-monnify";
-import { Menu, X } from "lucide-react";
+
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Sponsorship", href: "#sponsorship" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -23,29 +29,40 @@ export default function Header() {
     customerEmail: "guest@example.com",
     paymentReference: `KAD-TF-${Date.now()}`,
     onComplete: () => alert("Payment successful!"),
-    onClose: () => {},
+    onClose: () => console.log("Payment closed"),
   });
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur">
-      <div className="container max-w-7xl mx-auto flex h-16 items-center justify-between px-4">
+    <header className="w-full border-b bg-background">
+      <div className="container max-w-7xl flex h-16 items-center justify-between">
 
-        {/* LEFT: Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <TradeFairLogo className="h-8 w-8" />
-          <span className="font-bold text-lg hidden sm:inline">
-            Kaduna Trade Fair
-          </span>
-        </Link>
+        {/* Left: Logo + Nav */}
+        <div className="flex items-center gap-6">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <TradeFairLogo className="h-8 w-8" />
+            <KadccimaLogo className="h-8 w-8" />
+            <span className="hidden sm:inline font-bold">
+              Kaduna Trade Fair
+            </span>
+          </Link>
 
-        {/* DESKTOP NAV */}
-        <div className="hidden md:flex items-center gap-4">
-          <div className="flex items-center gap-3 border-l pl-4">
-            <KadccimaLogo className="h-7 w-7" />
-            <GrbsLogo className="h-7 w-7" />
-            <KadIctHubLogo className="h-7 w-7" />
-          </div>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-6">
+            {navLinks.map(link => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
 
+        {/* Right: Buttons */}
+        <div className="hidden md:flex items-center gap-2">
           <Button onClick={initializePayment} disabled={isInitializing}>
             {isInitializing ? "Loading..." : "Become a Sponsor"}
           </Button>
@@ -55,44 +72,44 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
+        {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2"
           onClick={() => setOpen(!open)}
+          className="md:hidden"
           aria-label="Toggle menu"
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X /> : <Menu />}
         </button>
       </div>
 
-      {/* MOBILE DROPDOWN */}
+      {/* Mobile Dropdown */}
       {open && (
         <div className="md:hidden border-t bg-background">
-          <div className="flex flex-col gap-4 p-4">
+          <nav className="flex flex-col p-4 gap-4">
+            {navLinks.map(link => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="text-sm font-medium"
+              >
+                {link.label}
+              </Link>
+            ))}
 
             <Button
-              onClick={() => {
-                initializePayment();
-                setOpen(false);
-              }}
+              onClick={initializePayment}
               disabled={isInitializing}
-              className="w-full"
             >
               Become a Sponsor
             </Button>
 
-            <Link href="/admin/login" onClick={() => setOpen(false)}>
+            <Link href="/admin/login">
               <Button variant="outline" className="w-full">
                 Admin Login
               </Button>
             </Link>
-
-            <div className="flex items-center justify-center gap-4 pt-4 border-t">
-              <KadccimaLogo className="h-7 w-7" />
-              <GrbsLogo className="h-7 w-7" />
-              <KadIctHubLogo className="h-7 w-7" />
-            </div>
-          </div>
+          </nav>
         </div>
       )}
     </header>
