@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-3">
               <TradeFairLogo className="h-12 w-12" />
-              <LagosTradeOfficeLogo className="h-12 w-12" />
+         
               <div>
                 <p className="text-lg font-bold">Kaduna International Trade Fair</p>
               </div>
@@ -25,7 +25,7 @@ export default function Footer() {
         </div>
         <div className="mt-8 border-t border-primary-foreground/20 pt-8 text-center text-sm text-primary-foreground/80 flex justify-between">
           <p>&copy; {currentYear} Kaduna Chamber of Commerce, Industry, Mines & Agriculture. All rights reserved.</p>
-          <Link href="/admin/login" className="hover:underline">Admin Login</Link>
+         
         </div>
       </div>
     </footer>
