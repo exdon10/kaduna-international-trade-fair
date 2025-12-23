@@ -43,7 +43,7 @@ export default function Header() {
             <TradeFairLogo className="h-8 w-8" />
             <KadccimaLogo className="h-8 w-8" />
             <span className="hidden sm:inline font-bold">
-              Kaduna Trade Fair
+              LeaderShip
             </span>
           </Link>
 
