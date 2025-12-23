@@ -46,11 +46,11 @@ export default function Header() {
               LeaderShip
             </span>
           </Link>
-          <div className="hidden md:flex items-center gap-4 border-l border-border pl-4">
+      
              <p className="text-sm font-medium text-muted-foreground mr-2">Partners:</p>
              <GrbsLogo className="h-7 w-7" />
              <KadIctHubLogo className="h-7 w-7" />
-          </div>
+          
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
@@ -67,15 +67,7 @@ export default function Header() {
         </div>
 
         {/* Right: Buttons */}
-        <div className="hidden md:flex items-center gap-2">
-          <Button onClick={initializePayment} disabled={isInitializing}>
-            {isInitializing ? "Loading..." : "Become a Sponsor"}
-          </Button>
-
-          <Link href="/admin/login">
-            <Button variant="outline">Admin Login</Button>
-          </Link>
-        </div>
+       
 
         {/* Mobile Menu Button */}
         <button
