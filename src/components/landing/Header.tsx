@@ -82,29 +82,9 @@ export default function Header() {
       {open && (
         <div className="md:hidden border-t bg-background">
           <nav className="flex flex-col p-4 gap-4">
-            {navLinks.map(link => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="text-sm font-medium"
-              >
-                {link.label}
-              </Link>
-            ))}
+            
 
-            <Button
-              onClick={initializePayment}
-              disabled={isInitializing}
-            >
-              Become a Sponsor
-            </Button>
 
-            <Link href="/admin/login">
-              <Button variant="outline" className="w-full">
-                Admin Login
-              </Button>
-            </Link>
           </nav>
         </div>
       )}
