@@ -36,9 +36,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2">
             <TradeFairLogo className="h-8 w-8" />
             <KadccimaLogo className="h-8 w-8" />
-            <span className="hidden sm:inline font-bold">
-              Kaduna Trade Fair
-            </span>
+           
           </Link>
 
           {/* Partner Logos */}
