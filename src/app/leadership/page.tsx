@@ -5,18 +5,18 @@ import Footer from '@/components/landing/Footer';
 
 const leaders = [
   {
-    name: " ALH. MUHAMMADU MUNIR JA’AFARU ",
-    position: "CHAIRMAN",
+    name: "ALH MUHAMMADU MUNIR JA'AFARU mni  OFR MADAKIN ZAZZAU ",
+    position: "PATRON AND CHAIRMAN BOT",
     image: "/leadership/leader1.jpeg",
   },
   {
     name: "ALH. FARUK SULEIMAN",
-    position: "1st DEPUTY PRESIDENT",
+    position: "PRESIDENT",
     image: "/leadership/leader2.jpeg",
   },
   {
     name: "ALH. TIJJANI MUSA",
-    position: "",
+    position: "1st DEPUTY PRESIDENT",
     image: "/leadership/leader3.jpg",
   },
   {
