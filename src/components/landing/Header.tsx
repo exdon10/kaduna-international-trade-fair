@@ -13,6 +13,7 @@ import {
 import { useMonnifyPayment } from "@/hooks/use-monnify";
 
 const navLinks = [
+  { label: "HOME", href: "/" },
   { label: "LEADERSHIP", href: "/leadership" },
   { label: "REPORT", href: "/report" },
   { label: "GALLERY", href: "/gallery" }
