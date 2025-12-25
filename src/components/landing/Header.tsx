@@ -13,23 +13,18 @@ import {
 import { useMonnifyPayment } from "@/hooks/use-monnify";
 
 const navLinks = [
-  { label: "Report", href: "/report" }
+  { label: "LEADERSHIP", href: "/leadership" },
+  { label: "REPORT", href: "/report" },
+  { label: "GALLERY", href: "/gallery" }
+
+
+  
+
 
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-
-  const { initializePayment, isInitializing } = useMonnifyPayment({
-    amount: 1000,
-    currency: "NGN",
-    description: "Sponsorship for Kaduna International Trade Fair",
-    customerFullName: "Guest Sponsor",
-    customerEmail: "guest@example.com",
-    paymentReference: `KAD-TF-${Date.now()}`,
-    onComplete: () => alert("Payment successful!"),
-    onClose: () => console.log("Payment closed"),
-  });
 
   return (
     <header className="w-full border-b bg-background">
@@ -42,14 +37,13 @@ export default function Header() {
             <TradeFairLogo className="h-8 w-8" />
             <KadccimaLogo className="h-8 w-8" />
             <span className="hidden sm:inline font-bold">
-              LeaderShip
+              Kaduna Trade Fair
             </span>
           </Link>
-      
-             <p className="text-sm font-medium text-muted-foreground mr-2">Partners:</p>
-             <GrbsLogo className="h-7 w-7" />
-             <KadIctHubLogo className="h-7 w-7" />
-          
+
+          {/* Partner Logos */}
+          <GrbsLogo className="h-7 w-7" />
+          <KadIctHubLogo className="h-7 w-7" />
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6">
@@ -65,9 +59,6 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* Right: Buttons */}
-       
-
         {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen(!open)}
@@ -82,9 +73,16 @@ export default function Header() {
       {open && (
         <div className="md:hidden border-t bg-background">
           <nav className="flex flex-col p-4 gap-4">
-            
-
-
+            {navLinks.map(link => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="text-base font-medium text-muted-foreground hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
       )}
