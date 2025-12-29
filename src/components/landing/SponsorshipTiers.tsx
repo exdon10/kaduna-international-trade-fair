@@ -193,16 +193,15 @@ export default function SponsorshipTiers() {
                     </li>
                   ))}
                 </ul>
-                <Button asChild className="mt-6 w-full">
-                  <a
-                    href="https://trade-fair-ng.web.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Become a Sponsor
-                  </a>
+               <Button
+  className="mt-6 w-full"
+  onClick={() => {
+    window.open('https://trade-fair-ng.web.app/', '_blank');
+  }}
+>
+  Become a Sponsorr
+</Button>
 
-                </Button>
               </CardContent>
             </Card>
           ))}
@@ -243,15 +242,15 @@ export default function SponsorshipTiers() {
                   ))}
                 </ul>
               </div>
-              <Button asChild className="mt-6 w-full">
-                <a
-                  href="https://trade-fair-ng.web.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Become a Sponsor
-                </a>
-                </Button>
+             <Button
+  className="mt-6 w-full"
+  onClick={() => {
+    window.open('https://trade-fair-ng.web.app/', '_blank');
+  }}
+>
+  Become aa Sponsor
+</Button>
+
             </CardContent>
           </Card>
 
@@ -282,14 +281,16 @@ export default function SponsorshipTiers() {
                         </span>
                         {pkg.benefits}
                       </div>
-                      <a href="https://trade-fair-ng.web.app/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-block">
-                        <Button
-                          size="sm"
-                          className="w-full sm:w-auto"
-                        >
-                          Sponsor {pkg.name.replace('SME ', '')} Tier
-                        </Button>
-                      </a>
+                      <Button
+  size="sm"
+  className="w-full sm:w-auto"
+  onClick={() => {
+    window.open('https://trade-fair-ng.web.app/', '_blank');
+  }}
+>
+  Sponsor {pkg.name.replace('SME ', '')} Tier
+</Button>
+
                     </AccordionContent>
                   </AccordionItem>
                 ))}
