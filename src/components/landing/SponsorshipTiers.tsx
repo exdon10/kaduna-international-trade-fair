@@ -199,7 +199,7 @@ export default function SponsorshipTiers() {
     window.open('https://trade-fair-ng.web.app/', '_blank');
   }}
 >
-  Become a Sponsorr
+  Become a Sponsor
 </Button>
 
               </CardContent>
@@ -248,7 +248,7 @@ export default function SponsorshipTiers() {
     window.open('https://trade-fair-ng.web.app/', '_blank');
   }}
 >
-  Become aa Sponsor
+  Become a Sponsor
 </Button>
 
             </CardContent>
