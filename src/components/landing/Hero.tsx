@@ -34,7 +34,7 @@ export default function Hero() {
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a href="https://trade-fair-ng.web.app/">
             <Button size="lg">
-              Get Ticket
+              REGISTER TO ATTEND
             </Button>
           </a>
           <a href="#contact">
