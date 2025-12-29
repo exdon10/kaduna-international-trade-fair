@@ -17,7 +17,17 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { SponsorshipModal, type SponsorshipTierInfo } from './SponsorshipModal';
+
+type SponsorshipTierInfo = {
+  name: string;
+  price: string;
+  amount: number;
+  description?: string;
+  benefits: string | string[];
+  highlight?: boolean;
+  per?: string;
+  assets?: string[];
+};
 
 const mainTiers: SponsorshipTierInfo[] = [
   {
@@ -136,10 +146,7 @@ const smePackages: Omit<SponsorshipTierInfo, 'description'>[] = [
 ];
 
 export default function SponsorshipTiers() {
-  const [selectedTier, setSelectedTier] = React.useState<SponsorshipTierInfo | null>(null);
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-
+  
 
   return (
     <>
@@ -276,13 +283,14 @@ export default function SponsorshipTiers() {
                             </span>
                             {pkg.benefits}
                         </div>
-                        <Button
-                          size="sm"
-                        
-                          className="w-full sm:w-auto"
-                        >
-                          Sponsor {pkg.name.replace('SME ', '')} Tier
-                        </Button>
+                         <a href="https://trade-fair-ng.web.app/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-block">
+                            <Button
+                            size="sm"
+                            className="w-full sm:w-auto"
+                            >
+                            Sponsor {pkg.name.replace('SME ', '')} Tier
+                            </Button>
+                        </a>
                       </AccordionContent>
                     </AccordionItem>
                   ))}
