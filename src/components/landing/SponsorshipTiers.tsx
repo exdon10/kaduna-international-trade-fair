@@ -139,10 +139,7 @@ export default function SponsorshipTiers() {
   const [selectedTier, setSelectedTier] = React.useState<SponsorshipTierInfo | null>(null);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
-  const handleSponsorClick = (tier: SponsorshipTierInfo) => {
-    setSelectedTier(tier);
-    setIsModalOpen(true);
-  };
+
 
   return (
     <>
@@ -189,22 +186,16 @@ export default function SponsorshipTiers() {
                       </li>
                     ))}
                   </ul>
-                 // <Button
-                 //   className="mt-6 w-full"
-                 //   onClick={() => handleSponsorClick(tier)}
-                 // >
-                //    Become a Sponsor
-                //  </Button>
-                  <a href="https://trade-fair-ng.web.app/">
-            <Button
-  className="mt-6 w-full"
-  onClick={() => {
-    window.location.href = 'https://trade-fair-ng.web.app/';
-  }}
->
-              Become a Sponsor
-            </Button>
-          </a>
+                <Button asChild className="mt-6 w-full">
+  <a
+    href="https://trade-fair-ng.web.app/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Become a Sponsor
+  </a>
+</Button>
+
                 </CardContent>
               </Card>
             ))}
@@ -245,22 +236,16 @@ export default function SponsorshipTiers() {
                     ))}
                     </ul>
                 </div>
-               // <Button
-                //  className="mt-6 w-full"
-               //   onClick={() => handleSponsorClick(assetSponsorship)}
-               // >
-                //  Become a Sponsor
-               // </Button>
-                 <a href="https://trade-fair-ng.web.app/">
-            <Button
-  className="mt-6 w-full"
-  onClick={() => {
-    window.location.href = 'https://trade-fair-ng.web.app/';
-  }}
->
-              Become a Sponsor
-            </Button>
-          </a>
+              <Button asChild className="mt-6 w-full">
+  <a
+    href="https://trade-fair-ng.web.app/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Become a Sponsor
+  </a>
+</Button>
+
               </CardContent>
             </Card>
 
@@ -293,7 +278,7 @@ export default function SponsorshipTiers() {
                         </div>
                         <Button
                           size="sm"
-                          onClick={() => handleSponsorClick(pkg)}
+                        
                           className="w-full sm:w-auto"
                         >
                           Sponsor {pkg.name.replace('SME ', '')} Tier
@@ -308,11 +293,7 @@ export default function SponsorshipTiers() {
         </div>
       </section>
       {selectedTier && (
-        <SponsorshipModal
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          tier={selectedTier}
-        />
+       
       )}
     </>
   );
