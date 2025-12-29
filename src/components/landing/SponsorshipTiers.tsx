@@ -281,13 +281,13 @@ export default function SponsorshipTiers() {
                         </span>
                         {pkg.benefits}
                       </div>
-                 <Button
+                     <Button
   className="mt-6 w-full"
   onClick={() => {
     window.open('https://trade-fair-ng.web.app/', '_blank');
   }}
 >
-  Become aa Sponsor
+  Become a Sponsor
 </Button>
 
                     </AccordionContent>
