@@ -281,14 +281,13 @@ export default function SponsorshipTiers() {
                         </span>
                         {pkg.benefits}
                       </div>
-                      <Button
-  size="sm"
-  className="w-full sm:w-auto"
+                 <Button
+  className="mt-6 w-full"
   onClick={() => {
     window.open('https://trade-fair-ng.web.app/', '_blank');
   }}
 >
-  Sponsor {pkg.name.replace('SME ', '')} Tier
+  Become aa Sponsor
 </Button>
 
                     </AccordionContent>
