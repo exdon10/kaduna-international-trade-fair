@@ -196,7 +196,12 @@ export default function SponsorshipTiers() {
                 //    Become a Sponsor
                 //  </Button>
                   <a href="https://trade-fair-ng.web.app/">
-            <Button className="mt-6 w-full">
+            <Button
+  className="mt-6 w-full"
+  onClick={() => {
+    window.location.href = 'https://trade-fair-ng.web.app/';
+  }}
+>
               Become a Sponsor
             </Button>
           </a>
@@ -247,7 +252,12 @@ export default function SponsorshipTiers() {
                 //  Become a Sponsor
                // </Button>
                  <a href="https://trade-fair-ng.web.app/">
-            <Button className="mt-6 w-full">
+            <Button
+  className="mt-6 w-full"
+  onClick={() => {
+    window.location.href = 'https://trade-fair-ng.web.app/';
+  }}
+>
               Become a Sponsor
             </Button>
           </a>
