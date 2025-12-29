@@ -189,12 +189,17 @@ export default function SponsorshipTiers() {
                       </li>
                     ))}
                   </ul>
-                  <Button
-                    className="mt-6 w-full"
-                    onClick={() => handleSponsorClick(tier)}
-                  >
-                    Become a Sponsor
-                  </Button>
+                 // <Button
+                 //   className="mt-6 w-full"
+                 //   onClick={() => handleSponsorClick(tier)}
+                 // >
+                //    Become a Sponsor
+                //  </Button>
+                  <a href="https://trade-fair-ng.web.app/">
+            <Button className="mt-6 w-full">
+              Become a Sponsor
+            </Button>
+          </a>
                 </CardContent>
               </Card>
             ))}
@@ -235,12 +240,17 @@ export default function SponsorshipTiers() {
                     ))}
                     </ul>
                 </div>
-                <Button
-                  className="mt-6 w-full"
-                  onClick={() => handleSponsorClick(assetSponsorship)}
-                >
-                  Become a Sponsor
-                </Button>
+               // <Button
+                //  className="mt-6 w-full"
+               //   onClick={() => handleSponsorClick(assetSponsorship)}
+               // >
+                //  Become a Sponsor
+               // </Button>
+                 <a href="https://trade-fair-ng.web.app/">
+            <Button className="mt-6 w-full">
+              Become a Sponsor
+            </Button>
+          </a>
               </CardContent>
             </Card>
 
