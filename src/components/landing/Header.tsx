@@ -82,10 +82,7 @@ export default function Header() {
             ))}
           </div>
 
-          {/* CTA Link */}
-          <Button asChild size="sm">
-            <Link href="/register">Register</Link>
-          </Button>
+       
         </div>
 
         {/* Mobile Menu Button */}
