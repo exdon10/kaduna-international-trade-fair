@@ -126,9 +126,7 @@ export default function Header() {
             </div>
 
             {/* Mobile CTA */}
-            <Button asChild className="mt-4">
-              <Link href="/register">Register</Link>
-            </Button>
+         
           </nav>
         </div>
       )}
