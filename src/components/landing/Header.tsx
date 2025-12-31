@@ -2,7 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import {
+  Menu,
+  X,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   KadccimaLogo,
@@ -10,18 +17,19 @@ import {
   TradeFairLogo,
   KadIctHubLogo
 } from "@/components/icons";
-import { useMonnifyPayment } from "@/hooks/use-monnify";
 
 const navLinks = [
   { label: "HOME", href: "/" },
   { label: "LEADERSHIP", href: "/leadership" },
   { label: "REPORT", href: "/report" },
   { label: "GALLERY", href: "/gallery" }
+];
 
-
-  
-
-
+const socialLinks = [
+  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+  { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" }
 ];
 
 export default function Header() {
@@ -37,7 +45,6 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2">
             <TradeFairLogo className="h-8 w-8" />
             <KadccimaLogo className="h-8 w-8" />
-           
           </Link>
 
           {/* Partner Logos */}
@@ -56,6 +63,29 @@ export default function Header() {
               </Link>
             ))}
           </nav>
+        </div>
+
+        {/* Right: CTA + Social Icons (Desktop) */}
+        <div className="hidden md:flex items-center gap-4">
+          {/* Social Icons */}
+          <div className="flex items-center gap-3">
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <Link
+                key={label}
+                href={href}
+                target="_blank"
+                aria-label={label}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <Icon className="h-4 w-4" />
+              </Link>
+            ))}
+          </div>
+
+          {/* CTA Link */}
+          <Button asChild size="sm">
+            <Link href="/register">Register</Link>
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -82,6 +112,26 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+
+            {/* Mobile Social Icons */}
+            <div className="flex gap-4 pt-4 border-t">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <Link
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  aria-label={label}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  <Icon className="h-5 w-5" />
+                </Link>
+              ))}
+            </div>
+
+            {/* Mobile CTA */}
+            <Button asChild className="mt-4">
+              <Link href="/register">Register</Link>
+            </Button>
           </nav>
         </div>
       )}
