@@ -26,10 +26,10 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" }
+  { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Facebook, href: "https://www.facebook.com/share/v/18GbtHNr8L/", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/reel/DGP2yCbIuO-/?igsh=MTE3dW16bXd4MTJyeA==", label: "Instagram" },
+  { icon: Linkedin, href: "#", label: "LinkedIn" }
 ];
 
 export default function Header() {
